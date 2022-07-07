@@ -33,7 +33,7 @@ window.addEventListener("DOMContentLoaded", () => {
      
       seconds--;
       time.innerHTML =
-        "0:" + (seconds < 10 ? "0" : "") + String(seconds);  //ternary to make it readable
+        "Time remaining - 0:" + (seconds < 10 ? "0" : "") + String(seconds);  //ternary to make it readable
       if (seconds > 0) {
         setTimeout(tick, 1000);
       } else {
@@ -111,7 +111,7 @@ window.addEventListener("DOMContentLoaded", () => {
     calculateScore();
     alert(`You got ${score} out of 5.`);
     quizWrap.style.pointerEvents = 'none';
-    time.style.display= 'none';
+    time.style.display = 'none';
   
   });
 
@@ -132,8 +132,11 @@ console.log(quizItem.a)             // this returns  answer x4 (each question ha
         if (quizItem.a == i) {
         liElement.style.backgroundColor = 'lightGreen';
         }
-        if (quizItem.a == radioElement.checked) {
+        if (radioElement.checked && quizItem.a == i) {
           score++  // ??
+        }
+        if (radioElement.checked && quizItem.a != i) {
+          liElement.style.backgroundColor = 'pink';
         }
       }
     });
